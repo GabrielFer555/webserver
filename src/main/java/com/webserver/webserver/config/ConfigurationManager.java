@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import com.webserver.webserver.config.Configuration;
+import static com.webserver.webserver.config.com.webserver.webserver.util.Json.fromJson;
 
 /**
  *
@@ -43,7 +44,8 @@ public class ConfigurationManager {
         
     }
         JsonNode conf = Json.parse(sb.toString());
-        myConfigurationManager = Json.fromJson(conf, Configuration.class);
+        Object x = Json.fromJson(conf, Configuration.class);
+        myConfigurationManager = (ConfigurationManager) x;
 }
     /* Vai retornar a configuração já provida e carregada
     
